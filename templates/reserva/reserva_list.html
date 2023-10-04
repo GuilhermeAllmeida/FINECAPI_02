@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reservas</title>
+</head>
+<body>
+<h1>Lista de Reservas</h1>
+<input type="submit" onclick="location.href = '{% url 'reserva:create' %}'" value="Criar novo reserva">
+<ul>
+    {% for reserva in object_list %}
+    <li>{{ reserva.nome_empresa }} - <a href="{% url 'reserva:update' pk=reserva.id %}">Editar</a>
+    <a href="{% url 'reserva:detail' pk=reserva.id %}">Visualizar</a> -
+    <a href="{% url 'reserva:delete'  pk=reserva.id %}">Apagar</a> 
+    
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
